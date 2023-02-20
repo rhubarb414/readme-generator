@@ -31,9 +31,10 @@ const questions = [
     message: "Enter info about usage - separate paragraphs with '--'",
   },
   {
-    type: "input",
+    type: "list",
     name: "license",
-    message: "Enter license info",
+    message: "Choose a license:",
+    choices: ["Apache 2.0", "GNU GPLv3", "ISC", "MIT"],
   },
   {
     type: "input",
