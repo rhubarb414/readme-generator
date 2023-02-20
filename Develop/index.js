@@ -3,7 +3,6 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown.js");
 
-console.log(process.argv);
 // TODO: Create an array of questions for user input
 const questions = [
   {
@@ -19,17 +18,17 @@ const questions = [
   {
     type: "input",
     name: "ToC",
-    message: "Add a table of contents",
+    message: "Add a table of contents - separate rows with '--'",
   },
   {
     type: "input",
     name: "installation",
-    message: "Enter info about installation",
+    message: "Enter info about installation - separate paragraphs with '--'",
   },
   {
     type: "input",
     name: "usage",
-    message: "Enter info about usage",
+    message: "Enter info about usage - separate paragraphs with '--'",
   },
   {
     type: "input",
@@ -39,17 +38,17 @@ const questions = [
   {
     type: "input",
     name: "contributors",
-    message: "Add contributors",
+    message: "Add contributors - separate contributors with '--'",
   },
   {
     type: "input",
     name: "test",
-    message: "Add test info",
+    message: "Add test info - separate paragraphs with '--'",
   },
   {
     type: "input",
     name: "contact",
-    message: "Add contact info for questions",
+    message: "Add your email for questions",
   },
 ];
 
@@ -57,7 +56,12 @@ const questions = [
 function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+  inquirer
+    .prompt(questions)
+    .then((responses) => console.log(responses))
+    .catch((err) => console.error(err));
+}
 
 // Function call to initialize app
 init();
