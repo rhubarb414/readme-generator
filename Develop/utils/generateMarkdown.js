@@ -57,9 +57,16 @@ function renderUsageSection(usageResponse) {
   if (!usageResponse) {
     return "";
   } else {
-    const usageMD = `## <a id="usage"></a>Usage
-${usageResponse}`;
+    const usagePgraphs = usageResponse.split("--");
+    let usageMD = `## <a id="usage"></a>Usage
+  `;
 
+    for (const pgraph of usagePgraphs) {
+      // Needs linebreak in template literal so each pgraph is rendered in own row
+      usageMD += `${pgraph}
+  
+  `;
+    }
     return usageMD;
   }
 }
@@ -68,9 +75,16 @@ function renderContributorsSection(contributorsResponse) {
   if (!contributorsResponse) {
     return "";
   } else {
-    const contributorsMD = `## <a id="contributors"></a>Contributors
-${contributorsResponse}`;
+    const contributorPgraphs = contributorsResponse.split("--");
+    let contributorsMD = `## <a id='contributors'></a>Contributors
+  `;
 
+    for (const pgraph of contributorPgraphs) {
+      // Needs linebreak in template literal so each pgraph is rendered in own row
+      contributorsMD += `${pgraph}
+  
+  `;
+    }
     return contributorsMD;
   }
 }
@@ -104,6 +118,8 @@ const renderToc = (data) => {
     if (
       section === "title" || // Skip title
       section === "description" || // Skip description
+      section === "github" || // Don't add github to ToC
+      section === "email" || // Don't add email to ToC
       data[section] === "none" || // Handle a 'no license' response
       !data[section] // Skip sections that have no input
     ) {
@@ -121,12 +137,11 @@ const renderToc = (data) => {
 };
 
 const generateTocLinks = (tocArray) => {
-  tocMD = "";
+  let tocMD = "";
   for (const section of tocArray) {
-    console.log("section = " + section);
     sectionLowercase = section.toLowerCase();
     // Needs linebreak in template literal so each section is rendered in own row
-    tocMD += `[${section}](#${sectionLowercase})
+    tocMD += `- [${section}](#${sectionLowercase})
 
 `;
   }
