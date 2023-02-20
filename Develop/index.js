@@ -59,7 +59,7 @@ function writeToFile(fileName, data) {}
 function init() {
   inquirer
     .prompt(questions)
-    .then((responses) => console.log(responses))
+    .then((responses) => generateMarkdown(responses))
     .catch((err) => console.error(err));
 }
 
