@@ -184,34 +184,8 @@ ${renderContributorsSection(data.contributors)}
 ${renderTestsSection(data.tests)}
   
 ## <a id="questions"></a>Questions
-${data.email}`;
+For any questions, [visit my GitHub](https://github.com/${data.github})
+or [send me an email at ${data.email}](mailto:${data.email}).`;
 }
 
 module.exports = generateMarkdown;
-
-// // Return all content for README.md
-// function generateMarkdown(data) {
-//   return `${renderLicenseBadge(data.license)}
-// # ${data.title}
-
-// ## Description
-// ${data.description}
-
-// ## Table of Contents
-// ${renderToc(data)}
-
-// ## <a id="installation"></a>Installation
-// ${data.installation}
-
-// ## <a id="usage"></a>Usage
-// ${data.usage}
-// ${renderLicenseSection(data.license)}
-// ## <a id="contributors"></a>Contributors
-// ${data.contributors}
-
-// ## <a id="tests"></a>Tests
-// ${data.tests}
-
-// ## <a id="questions"></a>Questions
-// ${data.contact}`;
-// }
