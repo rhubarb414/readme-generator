@@ -45,9 +45,16 @@ function renderInstallationSection(installationResponse) {
   if (!installationResponse) {
     return "";
   } else {
-    const installationMD = `## <a id="installation"></a>Installation
-${installationResponse}`;
+    const installationPgraphs = installationResponse.split("--");
+    let installationMD = `## <a id="installation"></a>Installation
+  `;
 
+    for (const pgraph of installationPgraphs) {
+      // Needs linebreak in template literal so each pgraph is rendered in own row
+      installationMD += `${pgraph}
+  
+  `;
+    }
     return installationMD;
   }
 }
@@ -94,9 +101,16 @@ function renderTestsSection(testsResponse) {
   if (!testsResponse) {
     return "";
   } else {
-    const testsMD = `## <a id="tests"></a>Tests
-${testsResponse}`;
+    const testsPgraphs = testsResponse.split("--");
+    let testsMD = `## <a id="tests"></a>Tests
+  `;
 
+    for (const pgraph of testsPgraphs) {
+      // Needs linebreak in template literal so each pgraph is rendered in own row
+      testsMD += `${pgraph}
+  
+  `;
+    }
     return testsMD;
   }
 }
