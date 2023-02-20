@@ -1,23 +1,23 @@
-//Generate license badge URL and call renderLicenseLink to return markdown
+// Generate license badge URL and call renderLicenseLink to return markdown
 function renderLicenseBadge(licenseResponse) {
   if (licenseResponse === "none") {
     return "";
   } else {
-    //replace space with %20 url encoding
+    // Replace space with %20 url encoding
     const licenseEncoded = licenseResponse.replace(" ", "%20");
     const badgeURL = `https://img.shields.io/badge/License-${licenseEncoded}-green`;
 
-    //return markdown
+    // Return markdown
     return renderLicenseLink(licenseResponse, badgeURL);
   }
 }
 
-//Generate markdown for license badge
+// Generate markdown for license badge
 function renderLicenseLink(licenseResponse, badgeURL) {
   return `[![${licenseResponse} license badge](${badgeURL}})](https://shields.io/)`;
 }
 
-//Generate markdown for license section
+// Generate markdown for license section
 function renderLicenseSection(licenseResponse) {
   if (licenseResponse === "none") {
     return "";
@@ -29,37 +29,47 @@ This project is under the ${licenseResponse} license. See documentation in repo.
   }
 }
 
-//Generate table of contents
+// Generate table of contents
 const renderToc = (data) => {
   const tocArray = [];
 
-  //populate tocArray with sections based on user response
+  // Populate tocArray with sections based on user response
   for (const section in data) {
     if (
-      section === "title" || //skip title
-      section === "description" || //skip description
-      data[section] === "none" || //handle a 'no license' response
-      !data[section] //don't add sections that have no input
+      section === "title" || // Skip title
+      section === "description" || // Skip description
+      data[section] === "none" || // Handle a 'no license' response
+      !data[section] // Skip sections that have no input
     ) {
     } else {
-      //Capitalize first letter in each section name for ToC presentation
+      // Capitalize first letter in each section name for ToC presentation
       const sectionTitleCased =
         section.charAt(0).toUpperCase() + section.slice(1);
+      // Add section to tocArray
       tocArray.push(sectionTitleCased);
     }
   }
-  tocArray.push("Questions"); //add mandatory Questions section to tocArray
+  tocArray.push("Questions"); // Add mandatory Questions section to tocArray
 
-  console.log(`tocArray = ${tocArray}`); //delete
-  return tocArray;
+  // console.log(`tocArray = ${tocArray}`); //delete
+  return generateTocLinks(tocArray);
 };
 
-const generateTocLinks = (tocArray) => {};
+const generateTocLinks = (tocArray) => {
+  console.log("tocArray = " + tocArray); //delete
+  console.log("tocArray[0] = " + typeof tocArray[0]); //del
+  tocMarkdown = "";
+  for (const section of tocArray) {
+    console.log("section = " + section);
+    sectionLowercase = section.toLowerCase();
+    tocMarkdown += `[${section}](#${sectionLowercase})
+    `;
+  }
+  return tocMarkdown;
+};
 
-//Return all content for README.md
+// Return all content for README.md
 function generateMarkdown(data) {
-  renderToc(data); //delete
-
   return `${renderLicenseBadge(data.license)}
 # ${data.title}
 
@@ -67,20 +77,21 @@ function generateMarkdown(data) {
 ${data.description}
   
 ## Table of Contents
+${renderToc(data)}
   
-## Installation
+## <a id="installation"></a>Installation
 ${data.installation}
 
-## Usage
+## <a id="usage"></a>Usage
 ${data.usage}  
 ${renderLicenseSection(data.license)}
-## Contributors
+## <a id="contributors"></a>Contributors
 ${data.contributors}
   
-## Tests
+## <a id="tests"></a>Tests
 ${data.test}
   
-## Questions
+## <a id="questions"></a>Questions
 ${data.contact}`;
 }
 
