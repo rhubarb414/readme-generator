@@ -39,7 +39,7 @@ const questions = [
   },
   {
     type: "input",
-    name: "test",
+    name: "tests",
     message: "Add test info - separate paragraphs with '--'",
   },
   {

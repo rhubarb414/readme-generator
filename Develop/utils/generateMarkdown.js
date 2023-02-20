@@ -22,13 +22,56 @@ function renderLicenseSection(licenseResponse) {
   if (licenseResponse === "none") {
     return "";
   } else {
-    const licenseMD = `## License
+    const licenseMD = `## <a id="license"></a>License
 This project is under the ${licenseResponse} license. See documentation in repo.`;
 
     return licenseMD;
   }
 }
 
+function renderInstallationSection(installationResponse) {
+  if (!installationResponse) {
+    return "";
+  } else {
+    const installationMD = `## <a id="installation"></a>Installation
+${installationResponse}`;
+
+    return installationMD;
+  }
+}
+
+function renderUsageSection(usageResponse) {
+  if (!usageResponse) {
+    return "";
+  } else {
+    const usageMD = `## <a id="usage"></a>Usage
+${usageResponse}`;
+
+    return usageMD;
+  }
+}
+
+function renderContributorsSection(contributorsResponse) {
+  if (!contributorsResponse) {
+    return "";
+  } else {
+    const contributorsMD = `## <a id="contributors"></a>Contributors
+${contributorsResponse}`;
+
+    return contributorsMD;
+  }
+}
+
+function renderTestsSection(testsResponse) {
+  if (!testsResponse) {
+    return "";
+  } else {
+    const testsMD = `## <a id="tests"></a>Tests
+${testsResponse}`;
+
+    return testsMD;
+  }
+}
 // Generate table of contents
 const renderToc = (data) => {
   const tocArray = [];
@@ -51,21 +94,20 @@ const renderToc = (data) => {
   }
   tocArray.push("Questions"); // Add mandatory Questions section to tocArray
 
-  // console.log(`tocArray = ${tocArray}`); //delete
   return generateTocLinks(tocArray);
 };
 
 const generateTocLinks = (tocArray) => {
-  console.log("tocArray = " + tocArray); //delete
-  console.log("tocArray[0] = " + typeof tocArray[0]); //del
-  tocMarkdown = "";
+  tocMD = "";
   for (const section of tocArray) {
     console.log("section = " + section);
     sectionLowercase = section.toLowerCase();
-    tocMarkdown += `[${section}](#${sectionLowercase})
-    `;
+    // Needs linebreak in template literal so each section is rendered in own row
+    tocMD += `[${section}](#${sectionLowercase})
+
+`;
   }
-  return tocMarkdown;
+  return tocMD;
 };
 
 // Return all content for README.md
@@ -79,17 +121,11 @@ ${data.description}
 ## Table of Contents
 ${renderToc(data)}
   
-## <a id="installation"></a>Installation
-${data.installation}
-
-## <a id="usage"></a>Usage
-${data.usage}  
+${renderInstallationSection(data.installation)}
+${renderUsageSection(data.usage)}
 ${renderLicenseSection(data.license)}
-## <a id="contributors"></a>Contributors
-${data.contributors}
-  
-## <a id="tests"></a>Tests
-${data.test}
+${renderContributorsSection(data.contributors)}
+${renderTestsSection(data.tests)}
   
 ## <a id="questions"></a>Questions
 ${data.contact}`;
@@ -97,23 +133,29 @@ ${data.contact}`;
 
 module.exports = generateMarkdown;
 
-// console.log("is this a string already? " + section);
-// const sectionString = section.toString();
+// // Return all content for README.md
+// function generateMarkdown(data) {
+//   return `${renderLicenseBadge(data.license)}
+// # ${data.title}
 
-//generate ToC using object destructuring
-//  const { installation, usage, license, contributors, test } = data;
-// if (installation) {
-//   tocArray.push("Installation");
-// }
-// if (usage) {
-//   tocArray.push("Usage");
-// }
-// if (license !== "none") {
-//   tocArray.push("License");
-// }
-// if (contributors) {
-//   tocArray.push("Contributors");
-// }
-// if (test) {
-//   tocArray.push("Tests");
+// ## Description
+// ${data.description}
+
+// ## Table of Contents
+// ${renderToc(data)}
+
+// ## <a id="installation"></a>Installation
+// ${data.installation}
+
+// ## <a id="usage"></a>Usage
+// ${data.usage}
+// ${renderLicenseSection(data.license)}
+// ## <a id="contributors"></a>Contributors
+// ${data.contributors}
+
+// ## <a id="tests"></a>Tests
+// ${data.tests}
+
+// ## <a id="questions"></a>Questions
+// ${data.contact}`;
 // }
