@@ -29,6 +29,25 @@ function renderLicenseLink(licenseResponse, badgeURL) {
 // vvv ~ Begin markdown generation section for individual sections ~ vvv
 // ~~~
 
+//Generate description section
+function renderDescriptionSection(descriptionResponse) {
+  if (!descriptionResponse) {
+    return "";
+  } else {
+    const descriptionPgraphs = descriptionResponse.split("--");
+    let descriptionMD = `## <a id="description"></a>Description
+  `;
+
+    for (const pgraph of descriptionPgraphs) {
+      // Needs linebreak in template literal so each pgraph is rendered in own row
+      descriptionMD += `${pgraph}
+  
+  `;
+    }
+    return descriptionMD;
+  }
+}
+
 // Generate license section
 function renderLicenseSection(licenseResponse) {
   if (licenseResponse === "none") {
@@ -171,8 +190,7 @@ function generateMarkdown(data) {
   return `${renderLicenseBadge(data.license)}
 # ${data.title}
 
-## Description
-${data.description}
+${renderDescriptionSection(data.description)}
   
 ## Table of Contents
 ${renderToc(data)}

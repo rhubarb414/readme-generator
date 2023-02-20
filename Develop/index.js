@@ -20,7 +20,7 @@ const questions = [
   {
     type: "input",
     name: "description",
-    message: "Enter the description",
+    message: "Enter the description - separate paragraphs with '--'",
     validate(value) {
       if (!value) {
         return "Description cannot be empty";
