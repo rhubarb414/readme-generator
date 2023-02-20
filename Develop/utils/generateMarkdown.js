@@ -1,3 +1,7 @@
+// ~~~
+// vvv ~ Begin license setion ~ vvv
+// ~~~
+
 // Generate license badge URL and call renderLicenseLink to return markdown
 function renderLicenseBadge(licenseResponse) {
   if (licenseResponse === "none") {
@@ -17,7 +21,15 @@ function renderLicenseLink(licenseResponse, badgeURL) {
   return `[![${licenseResponse} license badge](${badgeURL}})](https://shields.io/)`;
 }
 
-// Generate markdown for license section
+// ~~~
+// ^^^ ~ End license setion ~ ^^^
+// ~~~
+
+// ~~~
+// vvv ~ Begin markdown generation section for individual sections ~ vvv
+// ~~~
+
+// Generate license section
 function renderLicenseSection(licenseResponse) {
   if (licenseResponse === "none") {
     return "";
@@ -28,7 +40,7 @@ This project is under the ${licenseResponse} license. See documentation in repo.
     return licenseMD;
   }
 }
-
+// Generate installation section
 function renderInstallationSection(installationResponse) {
   if (!installationResponse) {
     return "";
@@ -40,6 +52,7 @@ ${installationResponse}`;
   }
 }
 
+// Generate usage section
 function renderUsageSection(usageResponse) {
   if (!usageResponse) {
     return "";
@@ -50,7 +63,7 @@ ${usageResponse}`;
     return usageMD;
   }
 }
-
+// Generate contributors section
 function renderContributorsSection(contributorsResponse) {
   if (!contributorsResponse) {
     return "";
@@ -62,6 +75,7 @@ ${contributorsResponse}`;
   }
 }
 
+// Generate tests section
 function renderTestsSection(testsResponse) {
   if (!testsResponse) {
     return "";
@@ -72,6 +86,15 @@ ${testsResponse}`;
     return testsMD;
   }
 }
+
+// ~~~
+// ^^^ ~ End markdown generation section for individual secions ~ ^^^
+// ~~~
+
+// ~~~
+// vvv ~ Begin table of contents setion ~ vvv
+// ~~~
+
 // Generate table of contents
 const renderToc = (data) => {
   const tocArray = [];
@@ -110,6 +133,10 @@ const generateTocLinks = (tocArray) => {
   return tocMD;
 };
 
+// ~~~
+// ^^^ ~ End table of contents setion ~ ^^^
+// ~~~
+
 // Return all content for README.md
 function generateMarkdown(data) {
   return `${renderLicenseBadge(data.license)}
@@ -128,7 +155,7 @@ ${renderContributorsSection(data.contributors)}
 ${renderTestsSection(data.tests)}
   
 ## <a id="questions"></a>Questions
-${data.contact}`;
+${data.email}`;
 }
 
 module.exports = generateMarkdown;

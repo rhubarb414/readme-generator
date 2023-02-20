@@ -9,11 +9,25 @@ const questions = [
     type: "input",
     name: "title",
     message: "Enter the title of your project",
+    validate(value) {
+      if (!value) {
+        return "Title cannot be empty";
+      } else {
+        return true;
+      }
+    },
   },
   {
     type: "input",
     name: "description",
     message: "Enter the description",
+    validate(value) {
+      if (!value) {
+        return "Description cannot be empty";
+      } else {
+        return true;
+      }
+    },
   },
 
   {
@@ -44,8 +58,27 @@ const questions = [
   },
   {
     type: "input",
-    name: "contact",
+    name: "github",
+    message: "Enter your github username",
+    validate(value) {
+      if (!value) {
+        return "Username cannot be empty";
+      } else {
+        return true;
+      }
+    },
+  },
+  {
+    type: "input",
+    name: "email",
     message: "Add your email for questions",
+    validate(value) {
+      if (!value) {
+        return "Email cannot be empty";
+      } else {
+        return true;
+      }
+    },
   },
 ];
 
