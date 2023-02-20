@@ -15,11 +15,7 @@ const questions = [
     name: "description",
     message: "Enter the description",
   },
-  {
-    type: "input",
-    name: "ToC",
-    message: "Add a table of contents - separate rows with '--'",
-  },
+
   {
     type: "input",
     name: "installation",
