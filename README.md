@@ -65,4 +65,4 @@ Badges created using shields.io
 ## <a id="questions"></a>Questions
 
 For any questions, [visit my GitHub](https://github.com/rhubarb414)
-or [send me an email at cto.dubois@gmail.com](mailto:cto.dubois@gmail.com).
+or [send me an email at rhubarb.three@gmail.com](mailto:rhubarb.three@gmail.com).
