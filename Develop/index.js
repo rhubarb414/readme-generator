@@ -33,12 +33,20 @@ const questions = [
   {
     type: "input",
     name: "installation",
-    message: "Enter info about installation - separate paragraphs with '--'",
+    message:
+      "(Optional) Enter info about installation - separate paragraphs with '--'",
   },
   {
     type: "input",
     name: "usage",
     message: "Enter info about usage - separate paragraphs with '--'",
+    validate(value) {
+      if (!value) {
+        return "Usage cannot be empty";
+      } else {
+        return true;
+      }
+    },
   },
   {
     type: "list",
@@ -49,12 +57,12 @@ const questions = [
   {
     type: "input",
     name: "contributors",
-    message: "Add contributors - separate contributors with '--'",
+    message: "(Optional) Add contributors - separate contributors with '--'",
   },
   {
     type: "input",
     name: "tests",
-    message: "Add test info - separate paragraphs with '--'",
+    message: "(Optional) Add test info - separate paragraphs with '--'",
   },
   {
     type: "input",
