@@ -60,11 +60,14 @@ function writeToFile(fileName, data) {
 }
 
 function init() {
-  inquirer.prompt(questions).then((responses) => {
-    const readmeContent = generateMarkdown(responses);
+  inquirer
+    .prompt(questions)
+    .then((responses) => {
+      const readmeContent = generateMarkdown(responses);
 
-    writeToFile("README.md", readmeContent);
-  });
+      writeToFile("README.md", readmeContent);
+    })
+    .catch((err) => console.error(err));
 }
 
 // Function call to initialize app
