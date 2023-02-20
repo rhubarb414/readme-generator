@@ -46,7 +46,13 @@ Code to be downloaded and run on your local machine. When in the working directo
 
 When in the working directory, run `node index` and follow the prompts.
 
-Your README file will be created in the working directory
+Your README file will be created in the working directory.
+
+### Examples:
+
+- [View a sample readme made with this program.](./sample-README.md)
+
+- [Watch a walkthrough of this program.](./demo.mp4)
 
 ## <a id="license"></a>License
 
