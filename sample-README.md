@@ -1,10 +1,10 @@
 [![MIT license badge](https://img.shields.io/badge/License-MIT-green})](https://shields.io/)
-# Sample project
+# Sample proj
 
 ## <a id="description"></a>Description
-  This does stuff 
+  Does stuff 
   
-   and more!
+   Cool!
   
   
   
@@ -17,25 +17,30 @@
 
 - [Contributors](#contributors)
 
+- [Tests](#tests)
+
 - [Questions](#questions)
 
 
   
 ## <a id="installation"></a>Installation
-  Download to local. Run in CLI
+  Download code to your local. Run in CLI
   
   
 ## <a id="usage"></a>Usage
-  Follow the prompts
+  Install dependencies with `npm i`. Run program with `node index`
   
   
 ## <a id="license"></a>License
 This project is under the MIT license. See documentation in repo.
 ## <a id='contributors'></a>Contributors
-  Badges made from shields.io
+  Badges made using shields.io
   
   
-
+## <a id="tests"></a>Tests
+  Sample tests
+  
+  
   
 ## <a id="questions"></a>Questions
 For any questions, [visit my GitHub](https://github.com/rhubarb414)
