@@ -52,7 +52,7 @@ Your README file will be created in the working directory.
 
 - [View a sample readme made with this program.](./sample-README.md)
 
-- [Watch a walkthrough of this program.](https://drive.google.com/file/d/1kh5SyBIilXWGaavo4pcE0JEsKwCmcYwZ/view)
+- [Watch a walkthrough of this program.](https://drive.google.com/file/d/1LUE2a4eqjC1nT0n7EC5R2DtDHpURwRx1/view?usp=share_link)
 
 ## <a id="license"></a>License
 
